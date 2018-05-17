@@ -9,7 +9,8 @@ namespace Silnik
     public class Samolot
     {
         private String nazwa;
-        private int ID, zasieg, liczbaMiejsc;
+        private int ID, zasieg, 
+        public int liczbaMiejsc;
 
         public Samolot(String nazwa, int ID, int zasieg, int liczbaMiejsc)
         {

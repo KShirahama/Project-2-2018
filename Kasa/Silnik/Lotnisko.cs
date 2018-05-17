@@ -16,5 +16,17 @@ namespace Silnik
             this.nazwa = nazwa;
             samoloty = new List<Samolot>();
         }
+
+        public void DodajSamolot(Samolot samolot)
+        {
+            samoloty.Add(samolot);
+        }
+
+        public Samolot UsunSamolot(Samolot samolot)
+        {
+            Samolot rSamolot = samoloty.FirstOrDefault(x => x == samolot);  // Moze bedzie trzeba uzyc First zamiast FirstOrDefault
+            samoloty.Remove(rSamolot);
+            return rSamolot;
+        }
     }
 }
