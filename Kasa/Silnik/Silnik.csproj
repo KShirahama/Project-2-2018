@@ -40,17 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Archiwum.cs" />
-    <Compile Include="Bilet.cs" />
-    <Compile Include="Klient.cs" />
-    <Compile Include="KlientIndywidualny.cs" />
-    <Compile Include="Lot.cs" />
-    <Compile Include="Lotnisko.cs" />
-    <Compile Include="Posrednik.cs" />
+    <Compile Include="Models\Archiwum.cs" />
+    <Compile Include="Models\Bilet.cs" />
+    <Compile Include="Models\Klient.cs" />
+    <Compile Include="Models\KlientIndywidualny.cs" />
+    <Compile Include="Models\Lot.cs" />
+    <Compile Include="Models\Lotnisko.cs" />
+    <Compile Include="Models\Posrednik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Samolot.cs" />
-    <Compile Include="SerwerGlowny.cs" />
-    <Compile Include="Trasa.cs" />
+    <Compile Include="Models\Samolot.cs" />
+    <Compile Include="Models\SerwerGlowny.cs" />
+    <Compile Include="Models\Trasa.cs" />
+    <Compile Include="ViewModels\SesjaKasy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

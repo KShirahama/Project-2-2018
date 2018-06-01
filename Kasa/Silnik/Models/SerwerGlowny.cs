@@ -14,5 +14,17 @@ namespace Silnik
         List<Lot> loty;
         private int liczbaKlientow;
         Archiwum archiwum;
+
+        public SerwerGlowny()
+        {
+            lotniska = new List<Lotnisko>();
+            klienci = new List<Klient>();
+            trasy = new List<Trasa>();
+            loty = new List<Lot>();
+            liczbaKlientow = 0;
+            archiwum = new Archiwum();
+        }
+
+        public DodajLotnisko()
     }
 }
