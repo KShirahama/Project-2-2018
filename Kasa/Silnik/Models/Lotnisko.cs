@@ -10,7 +10,7 @@ namespace Silnik
     {
         private String nazwa;
         private List<Samolot> samoloty;
-
+        public String Nazwa { get; set; }
         public Lotnisko(String nazwa)
         {
             this.nazwa = nazwa;

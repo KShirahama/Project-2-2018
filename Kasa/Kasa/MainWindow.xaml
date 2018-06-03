@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kasa"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Kasa" Height="450" Width="800">
+    <Grid Background="#FFB8B7B7">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ListView>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="Auto" Header="IdLotu" DisplayMemberBinding="{Binding IdLotniska}"/>
+                    <!--Binding tymczasowe/przykładowe-->
+                    <GridViewColumn Width="Auto" Header="Wylot z" DisplayMemberBinding="{Binding NazwaLotniska}"/>
+                    <GridViewColumn Width="Auto" Header="Lot do" DisplayMemberBinding="{Binding IloscSamolotow}"/>
+                    <GridViewColumn Width="Auto" Header="Wolne miejsca" DisplayMemberBinding="{Binding IloscSamolotow}"/>
+                    <GridViewColumn Width="Auto" Header="T-" DisplayMemberBinding="{Binding IloscSamolotow}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Trasy" Grid.Column="1" Margin="10,0,0,120" VerticalAlignment="Bottom" Height="50" FontSize="24" HorizontalAlignment="Left" Width="376" Click="Button_Click_Trasy"/>
+        <Button Content="Lotniska" Grid.Column="1" Margin="10,0,0,65" VerticalAlignment="Bottom" Height="50" FontSize="24" HorizontalAlignment="Left" Width="376" Click="Button_Click_Lotniska"/>
+        <Button Content="Samoloty" Grid.Column="1" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="50" FontSize="24" HorizontalAlignment="Left" Width="376" Click="Button_Click_Samoloty"/>
     </Grid>
 </Window>

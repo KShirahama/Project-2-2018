@@ -24,5 +24,25 @@ namespace Kasa
         {
             InitializeComponent();
         }
+
+        private void Button_Click_Trasy(object sender, RoutedEventArgs e)
+        {
+            Trasy trasy = new Trasy();
+            trasy.Show();
+        }
+
+        private void Button_Click_Lotniska(object sender, RoutedEventArgs e)
+        {
+            Lotniska lotniska = new Lotniska();
+            lotniska.Show();
+        }
+
+        private void Button_Click_Samoloty(object sender, RoutedEventArgs e)
+        {
+            Samoloty samoloty = new Samoloty();
+            samoloty.Show();
+        }
+
+
     }
 }

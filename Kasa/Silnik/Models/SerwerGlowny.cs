@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Silnik
 {
-    class SerwerGlowny
+    public class SerwerGlowny
     {
         List<Lotnisko> lotniska;
         List<Klient> klienci;
@@ -25,6 +25,15 @@ namespace Silnik
             archiwum = new Archiwum();
         }
 
-        public DodajLotnisko()
+        public void DodajLotnisko(Lotnisko lotnisko)
+        {
+            lotniska.Add(lotnisko);
+        }
+
+        public void UsunLotnisko(Lotnisko lotnisko)
+        {
+            lotniska.Remove(lotnisko);
+        }
+
     }
 }

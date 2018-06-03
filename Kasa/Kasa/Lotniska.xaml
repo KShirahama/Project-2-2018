@@ -1,0 +1,46 @@
+﻿<Window x:Class="Kasa.Lotniska"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kasa"
+        mc:Ignorable="d"
+        Title="Lotniska" Height="450" Width="800">
+    <Grid Background="#FFB8B7B7">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid ItemsSource="{Binding Serwer.lotniska}"
+                              AutoGenerateColumns="False"
+                              HeadersVisibility="Column" Height="346" VerticalAlignment="Top">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="IdLotniska"
+                                                Binding="{Binding }"
+                                                Width="*"/>
+                <DataGridTextColumn Header="Nazwa Lotniska"
+                                                IsReadOnly="True"
+                                                Width="Auto"
+                                                Binding="{Binding Nazwa}"/>
+                <DataGridTextColumn Header="Ilość Samolotów"
+                                                Binding="{Binding }"
+                                                Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--<ListView  >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="Auto" Header="IdLotniska" DisplayMemberBinding="{Binding IdLotniska}"/>
+                    <GridViewColumn Width="Auto" Header="Nazwa Lotniska" DisplayMemberBinding="{Binding NazwaLotniska}"/>
+                    <GridViewColumn Width="100" Header="Ilość Samolotów" DisplayMemberBinding="{Binding IloscSamolotow}"/>
+                </GridView>
+            </ListView.View>
+        </ListView> -->
+        <Button Content="Usuń" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="183" Height="50" FontSize="24"/>
+        <Button Content="Edytuj" Margin="203,0,0,10" HorizontalAlignment="Left" Width="183" Height="50" VerticalAlignment="Bottom" FontSize="24"/>
+
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="50,82,0,0" TextWrapping="Wrap" Text="Nazwa Lotniska" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="50,103,0,0" TextWrapping="Wrap" Text="{Binding NazwaLotniska}" VerticalAlignment="Top" Width="300"/>
+        <Button Content="Dodaj Lotnisko" Grid.Column="1" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="50" FontSize="24" HorizontalAlignment="Left" Width="376" Click="Button_Click"/>
+    </Grid>
+</Window>
