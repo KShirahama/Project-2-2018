@@ -12,7 +12,6 @@ namespace Silnik
         List<Klient> klienci;
         List<Trasa> trasy;
         List<Lot> loty;
-        private int liczbaKlientow;
         Archiwum archiwum;
 
         public SerwerGlowny()
@@ -21,10 +20,58 @@ namespace Silnik
             klienci = new List<Klient>();
             trasy = new List<Trasa>();
             loty = new List<Lot>();
-            liczbaKlientow = 0;
             archiwum = new Archiwum();
         }
 
-        public DodajLotnisko()
+        public void DodajLotnisko(Lotnisko lotnisko)
+        {
+            lotniska.Add(lotnisko);
+        }
+
+        public Lotnisko UsunLotnisko(Lotnisko lotnisko)
+        {
+            Lotnisko rLotnisko = lotniska.FirstOrDefault(x => x == lotnisko);  // Moze bedzie trzeba uzyc First zamiast FirstOrDefault
+            lotniska.Remove(rLotnisko);
+            return rLotnisko;
+        }
+
+        public void DodajKlienta(Klient klient)
+        {
+
+            klienci.Add(klient);
+        }
+
+        public Klient UsunKlienta(Klient klient)
+        {
+            Klient rKlient = klienci.FirstOrDefault(x => x == klient);  // Moze bedzie trzeba uzyc First zamiast FirstOrDefault
+            klienci.Remove(rKlient);
+            return rKlient;
+        }
+
+        public void DodajTrase(Trasa trasa)
+        {
+            trasy.Add(trasa);
+        }
+
+        public Trasa UsunTrase(Trasa trasa)
+        {
+            Trasa rTrasa = trasy.FirstOrDefault(x => x == trasa);  // Moze bedzie trzeba uzyc First zamiast FirstOrDefault
+            trasy.Remove(rTrasa);
+            return rTrasa;
+        }
+
+        public void DodajLoto(Lot lot)
+        {
+            loty.Add(lot);
+        }
+
+        public Lot UsunLot(Lot lot)
+        {
+            Lot rLot = loty.FirstOrDefault(x => x == lot);  // Moze bedzie trzeba uzyc First zamiast FirstOrDefault
+            loty.Remove(rLot);
+            archiwum.ArchiwizujLot(rLot);
+            return rLot;
+        }
+
     }
 }

@@ -51,7 +51,6 @@
     <Compile Include="Models\Samolot.cs" />
     <Compile Include="Models\SerwerGlowny.cs" />
     <Compile Include="Models\Trasa.cs" />
-    <Compile Include="ViewModels\SesjaKasy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
