@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Silnik;
 
 namespace SystemZarzadzania
 {
@@ -20,9 +21,11 @@ namespace SystemZarzadzania
     /// </summary>
     public partial class MainWindow : Window
     {
+        SerwerGlowny serwer = new SerwerGlowny();
         public MainWindow()
         {
             InitializeComponent();
+            this.dg1.ItemsSource = serwer.lotniska;
         }
     }
 }

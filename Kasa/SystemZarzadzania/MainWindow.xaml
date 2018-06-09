@@ -24,10 +24,34 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="Lotniska">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Height="308" VerticalAlignment="Top" Name="dg1" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id"
+                                                Binding="{Binding }"
+                                                Width="20"/>
+                            <DataGridTextColumn Header="Nazwa Lotniska"
+                                                IsReadOnly="True"
+                                                Width="Auto"
+                                                Binding="{Binding Nazwa}"/>
+                            <DataGridTextColumn Header="Ilość Samolotów"
+                                                Binding="{Binding }"
+                                                Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Edytuj" HorizontalAlignment="Left" Margin="10,318,0,0" Width="180" FontSize="36" Height="60" VerticalAlignment="Top"/>
+                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36"/>
+
+                    <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,135,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="371"/>
+                    <Button Content="Dodaj" Grid.Column="1" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" Width="371" Height="60" FontSize="36"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Archiwum">
-            <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
 

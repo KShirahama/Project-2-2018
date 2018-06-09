@@ -11,6 +11,15 @@ namespace Silnik
         private String nazwa;
         private List<Samolot> samoloty;
 
+        public String Nazwa
+        {
+            get { return nazwa; }
+            set
+            {
+                nazwa = value;
+            }
+        } 
+
         public Lotnisko(String nazwa)
         {
             this.nazwa = nazwa;

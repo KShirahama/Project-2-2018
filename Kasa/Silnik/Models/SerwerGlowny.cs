@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Silnik
 {
-    class SerwerGlowny
+    public class SerwerGlowny
     {
-        List<Lotnisko> lotniska;
+        public List<Lotnisko> lotniska;
         List<Klient> klienci;
         List<Trasa> trasy;
         List<Lot> loty;
@@ -21,6 +21,7 @@ namespace Silnik
             trasy = new List<Trasa>();
             loty = new List<Lot>();
             archiwum = new Archiwum();
+            lotniska.Add(new Lotnisko("Ryozanpaku"));
         }
 
         public void DodajLotnisko(Lotnisko lotnisko)
