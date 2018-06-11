@@ -18,7 +18,7 @@ namespace Silnik
         {
             this.samolot = samolot;
             this.trasa = trasa;
-            this.dataWylotu = dataWylotu;
+            this.dataWylotu = new DateTime(dataWylotu.Year, dataWylotu.Month, dataWylotu.Day, trasa.GodzinaWylotu.Hour, trasa.GodzinaWylotu.Minute, trasa.GodzinaWylotu.Second);
             wolneRezerwacje = samolot.TypSamolotu.IloscMiejsc;
             bilety = new List<Bilet>();
         }
