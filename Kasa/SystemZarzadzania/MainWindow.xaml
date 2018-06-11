@@ -20,8 +20,101 @@
             <TabItem Header="Trasy">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
+            <TabItem Header="Typy Samolotów">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Height="308" VerticalAlignment="Top" Name="listaTypowSamolotow" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"
+                                                IsReadOnly="True"
+                                                Binding="{Binding ID}"
+                                                Width="40"/>
+                            <DataGridTextColumn Header="Nazwa"
+                                                IsReadOnly="True"
+                                                Width="*"
+                                                Binding="{Binding Nazwa}"/>
+                            <DataGridTextColumn Header="Zasięg"
+                                                IsReadOnly="True"
+                                                Binding="{Binding Zasieg}"
+                                                Width="Auto"/>
+                            <DataGridTextColumn Header="Ilość Miejsc"
+                                                IsReadOnly="True"
+                                                Binding="{Binding IloscMiejsc}"
+                                                Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Edytuj" HorizontalAlignment="Left" Margin="10,318,0,0" Width="180" FontSize="36" Height="60" VerticalAlignment="Top" IsEnabled="False"/>
+                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36" Click="UsunTypSamolotu_Click"/>
+
+                    <Label Grid.Column="1" Height="26" Margin="10,10,0,0" Content="ID" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <TextBox Name="idTypuSamolotu" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="122,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="261" IsReadOnly="True" Background="Transparent"/>
+                    <Label Grid.Column="1" Height="26" Margin="10,40,0,0" Content="Nazwa" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <TextBox Name="nazwaTypuSamolotu" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,40,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="263"/>
+                    <Label Grid.Column="1" Height="26" Margin="10,70,0,0" Content="Zasięg" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <TextBox Name="zasiegTypuSamolotu" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,70,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="263"/>
+                    <Label Grid.Column="1" Height="26" Margin="10,100,0,0" Content="Ilość Miejsc" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <TextBox Name="iloscMiejscTypuSamolotu" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,100,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="263"/>
+                    <Button Content="Dodaj" Grid.Column="1" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" Width="371" Height="60" FontSize="36" Click="DodajTypSamolotu_Click"/>
+                </Grid>
+            </TabItem>
             <TabItem Header="Samoloty">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Height="308" VerticalAlignment="Top" Name="listaSamolotow" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"
+                                                IsReadOnly="True"
+                                                Binding="{Binding ID}"
+                                                Width="40"/>
+                            <DataGridTextColumn Header="Nazwa"
+                                                IsReadOnly="True"
+                                                Width="*"
+                                                Binding="{Binding Nazwa}"/>
+                            <DataGridTextColumn Header="Typ Samolotu"
+                                                IsReadOnly="True"
+                                                Binding="{Binding TypSamolotu.Nazwa}"
+                                                Width="Auto"/>
+                            <DataGridTextColumn Header="Aktualna Lokacja"
+                                                IsReadOnly="True"
+                                                Binding="{Binding AktualneLotnisko.Nazwa}"
+                                                Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Edytuj" HorizontalAlignment="Left" Margin="10,318,0,0" Width="180" FontSize="36" Height="60" VerticalAlignment="Top" IsEnabled="False"/>
+                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36" Click="UsunSamolot_Click"/>
+
+                    <Label Grid.Column="1" Height="26" Margin="10,10,0,0" Content="ID" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <TextBox Name="idSamolotu" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="122,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="261" IsReadOnly="True" Background="Transparent"/>
+                    <Label Grid.Column="1" Height="26" Margin="10,40,0,0" Content="Nazwa" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <TextBox Name="nazwaSamolotu" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,40,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="263"/>
+                    <Label Grid.Column="1" Height="26" Margin="10,70,0,0" Content="Typ Samolotu" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,70,0,0" VerticalAlignment="Top" Width="263">
+                        <ComboBox Name="typSamolotu">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Nazwa}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                    <Label Grid.Column="1" Height="26" Margin="10,100,0,0" Content="Lotnisko" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,100,0,0" VerticalAlignment="Top" Width="263">
+                        <ComboBox Name="lotniskoSamolotu">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Nazwa}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                    <Button Content="Dodaj" Grid.Column="1" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" Width="371" Height="60" FontSize="36" Click="DodajSamolot_Click"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Lotniska">
                 <Grid Background="#FFE5E5E5">
@@ -29,25 +122,30 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid Height="308" VerticalAlignment="Top" Name="dg1" AutoGenerateColumns="False">
+                    <DataGrid Height="308" VerticalAlignment="Top" Name="listaLotnisk" AutoGenerateColumns="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id"
-                                                Binding="{Binding }"
-                                                Width="20"/>
+                            <DataGridTextColumn Header="ID"
+                                                IsReadOnly="True"
+                                                Binding="{Binding ID}"
+                                                Width="40"/>
                             <DataGridTextColumn Header="Nazwa Lotniska"
                                                 IsReadOnly="True"
-                                                Width="Auto"
+                                                Width="*"
                                                 Binding="{Binding Nazwa}"/>
                             <DataGridTextColumn Header="Ilość Samolotów"
-                                                Binding="{Binding }"
+                                                IsReadOnly="True"
+                                                Binding="{Binding Path=Samoloty.Count}"
                                                 Width="Auto"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Edytuj" HorizontalAlignment="Left" Margin="10,318,0,0" Width="180" FontSize="36" Height="60" VerticalAlignment="Top"/>
-                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36"/>
+                    <Button Content="Edytuj" HorizontalAlignment="Left" Margin="10,318,0,0" Width="180" FontSize="36" Height="60" VerticalAlignment="Top" IsEnabled="False"/>
+                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36" Click="UsunLotnisko_Click"/>
 
-                    <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,135,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="371"/>
-                    <Button Content="Dodaj" Grid.Column="1" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" Width="371" Height="60" FontSize="36"/>
+                    <Label Grid.Column="1" Height="26" Margin="10,10,0,0" Content="ID" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <TextBox Name="idLotniska" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="122,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="261" IsReadOnly="True" Background="Transparent"/>
+                    <Label Grid.Column="1" Height="26" Margin="10,40,0,0" Content="Nazwa Lotniska" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <TextBox Name="nazwaLotniska" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,40,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="263"/>
+                    <Button Content="Dodaj" Grid.Column="1" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" Width="371" Height="60" FontSize="36" Click="DodajLotnisko_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Archiwum">

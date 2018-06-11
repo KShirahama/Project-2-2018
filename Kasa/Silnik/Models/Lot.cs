@@ -19,7 +19,7 @@ namespace Silnik
             this.samolot = samolot;
             this.trasa = trasa;
             this.dataWylotu = dataWylotu;
-            wolneRezerwacje = samolot.liczbaMiejsc;
+            wolneRezerwacje = samolot.TypSamolotu.IloscMiejsc;
             bilety = new List<Bilet>();
         }
     }

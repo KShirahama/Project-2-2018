@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Silnik
 {
-    class Archiwum
+    public class Archiwum
     {
         List<Lot> loty;
 

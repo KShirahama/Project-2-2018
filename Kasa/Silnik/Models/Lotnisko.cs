@@ -1,41 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Engine;
 
 namespace Silnik
 {
-    public class Lotnisko
+    public class Lotnisko : PodstawowaKlasaPowiadomien
     {
+        private int id;
         private String nazwa;
-        private List<Samolot> samoloty;
 
+        public int ID
+        {
+            get { return id; }
+            set
+            {
+                id = value;
+                OnPropertyChanged("ID");
+            }
+        }
         public String Nazwa
         {
             get { return nazwa; }
-            set
+            private set
             {
                 nazwa = value;
+                OnPropertyChanged("Nazwa");
             }
         } 
 
-        public Lotnisko(String nazwa)
+        public Lotnisko(int id, String nazwa)
         {
+            this.id = id;
             this.nazwa = nazwa;
-            samoloty = new List<Samolot>();
         }
 
-        public void DodajSamolot(Samolot samolot)
+        public Lotnisko(Lotnisko lotnisko)
         {
-            samoloty.Add(samolot);
-        }
-
-        public Samolot UsunSamolot(Samolot samolot)
-        {
-            Samolot rSamolot = samoloty.FirstOrDefault(x => x == samolot);  // Moze bedzie trzeba uzyc First zamiast FirstOrDefault
-            samoloty.Remove(rSamolot);
-            return rSamolot;
+            id = lotnisko.id;
+            nazwa = lotnisko.nazwa;
         }
     }
 }

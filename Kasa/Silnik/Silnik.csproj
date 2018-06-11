@@ -47,6 +47,8 @@
     <Compile Include="Models\Lot.cs" />
     <Compile Include="Models\Lotnisko.cs" />
     <Compile Include="Models\Posrednik.cs" />
+    <Compile Include="Models\TypSamolotu.cs" />
+    <Compile Include="PodstawowaKlasaPowiadomien.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Samolot.cs" />
     <Compile Include="Models\SerwerGlowny.cs" />
