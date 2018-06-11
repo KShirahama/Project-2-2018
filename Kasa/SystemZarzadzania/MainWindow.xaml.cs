@@ -27,18 +27,103 @@ namespace SystemZarzadzania
         public MainWindow()
         {
             InitializeComponent();
+
+            wylotTrasy.ItemsSource = serwer.lotniska;
+            destynacjaTrasy.ItemsSource = serwer.lotniska;
             typSamolotu.ItemsSource = serwer.typySamolotow;
             lotniskoSamolotu.ItemsSource = serwer.lotniska;
+
+            listaTras.ItemsSource = serwer.trasy;
             listaTypowSamolotow.ItemsSource = serwer.typySamolotow;
             listaSamolotow.ItemsSource = serwer.samoloty;
             listaLotnisk.ItemsSource = serwer.lotniska;
+
             serwer.DodajLotnisko(new Lotnisko(1, "Yami"));
             serwer.DodajLotnisko(new Lotnisko(0, "Ryozanpaku"));
             serwer.DodajTypSamolotu(new TypSamolotu(0, "Air Force One", 99999, 5));
+
+            NowaTrasa();
             NoweLotnisko();
             NowySamolot();
             NowyTypSamolotu();
         }
+
+        #region Trasa
+
+        private void NowaTrasa()
+        {
+            idTrasy.Text = "" + serwer.trasyID;
+            wylotTrasy.SelectedItem = null;
+            destynacjaTrasy.SelectedItem = null;
+            godzimaTrasy.Text = "";
+            minutaTrasy.Text = "";
+            odlegloscTrasy.Text = "";
+            czestotliwoscTrasy.Text = "";
+        }
+
+        private void DodajTrase_Click(object sender, RoutedEventArgs e)
+        {
+            int idAktualnejTrasy, godzTrasy, minTrasy, odleglosc, czestotliwosc;
+            if (odlegloscTrasy.Text.Count() != 0 && czestotliwoscTrasy.Text.Count() != 0 && godzimaTrasy.Text.Count() != 0 && minutaTrasy.Text.Count() != 0)
+            {
+
+                if (wylotTrasy.SelectedItem == null || destynacjaTrasy.SelectedItem == null)
+                {
+                    MessageBox.Show("Wylot i destynacja muszą być wybrane!");
+                    return;
+                }
+                if (!Int32.TryParse(idTrasy.Text, out idAktualnejTrasy))
+                {
+                    MessageBox.Show("Wystąpił problem z ID!");
+                    return;
+                }
+                if (!Int32.TryParse(godzimaTrasy.Text, out godzTrasy))
+                {
+                    MessageBox.Show("Godzina musi być liczbą!");
+                    return;
+                }
+                if (!Int32.TryParse(minutaTrasy.Text, out minTrasy))
+                {
+                    MessageBox.Show("Minuta musi być liczbą!");
+                    return;
+                }
+                if (!Int32.TryParse(odlegloscTrasy.Text, out odleglosc))
+                {
+                    MessageBox.Show("Odległość musi być liczbą!");
+                    return;
+                }
+                if (!Int32.TryParse(czestotliwoscTrasy.Text, out czestotliwosc))
+                {
+                    MessageBox.Show("Częstotliwość musi być liczbą!");
+                    return;
+                }
+                if(godzTrasy > 23)
+                {
+                    MessageBox.Show("Dzień ma tylko 24 godziny./n(Zakres 0 - 23)");
+                    return;
+                }
+                if (godzTrasy > 59)
+                {
+                    MessageBox.Show("Godzina ma tylko 60 minut./n(Zakres 0 - 59)");
+                    return;
+                }
+
+                serwer.DodajTrase(new Trasa(odleglosc, czestotliwosc, new DateTime(1,1,1, godzTrasy, minTrasy, 0), (Lotnisko)wylotTrasy.SelectedItem, (Lotnisko)destynacjaTrasy.SelectedItem));
+                NowaTrasa();
+            }
+            else MessageBox.Show("Pola nie mogą być puste!");
+        }
+
+        private void UsunTrase_Click(object sender, RoutedEventArgs e)
+        {
+            Trasa trasa = listaTras.SelectedItem as Trasa;
+            if (trasa != null)
+            {
+                serwer.trasy.Remove(trasa);
+            }
+        }
+
+        #endregion
 
         #region TypSamolotu
 

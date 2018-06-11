@@ -9,11 +9,19 @@ namespace Silnik
 {
     public class Trasa : PodstawowaKlasaPowiadomien
     {
-        private int odleglosc, czestotliwosc; // Czas podruzy mozna sprubowac kalkulowac z predkosci samolotu
-        private TimeSpan czasPodruzy;
+        private int id, odleglosc, czestotliwosc;
         private DateTime godzinaWylotu;
         private Lotnisko wylot, destynacja;
 
+        public int ID
+        {
+            get { return id; }
+            set
+            {
+                id = value;
+                OnPropertyChanged("ID");
+            }
+        }
         public Lotnisko Wylot
         {
             get { return wylot; }
@@ -41,15 +49,6 @@ namespace Silnik
                 OnPropertyChanged("GodzinaWylotu");
             }
         }
-        public TimeSpan CzasPodruzy
-        {
-            get { return czasPodruzy; }
-            set
-            {
-                czasPodruzy = value;
-                OnPropertyChanged("CzasPodruzy");
-            }
-        }
         public int Odleglosc
         {
             get { return odleglosc; }
@@ -69,14 +68,21 @@ namespace Silnik
             }
         }
 
-        public Trasa(int odleglosc, int czestotliwosc, TimeSpan czasPodruzy, DateTime godzinaWylotu, Lotnisko wylot, Lotnisko destynacja)
+        public Trasa(int odleglosc, int czestotliwosc, DateTime godzinaWylotu, Lotnisko wylot, Lotnisko destynacja)
         {
             this.odleglosc = odleglosc;
             this.czestotliwosc = czestotliwosc;
-            this.czasPodruzy = czasPodruzy;
             this.godzinaWylotu = godzinaWylotu;
             this.wylot = wylot;
             this.destynacja = destynacja;
+        }
+        public Trasa(Trasa trasa)
+        {
+            this.odleglosc = trasa.odleglosc;
+            this.czestotliwosc = trasa.czestotliwosc;
+            this.godzinaWylotu = trasa.godzinaWylotu;
+            this.wylot = trasa.wylot;
+            this.destynacja = trasa.destynacja;
         }
     }
 }

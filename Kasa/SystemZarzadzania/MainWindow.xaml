@@ -56,26 +56,33 @@
                                                 IsReadOnly="True"
                                                 Binding="{Binding ID}"
                                                 Width="40"/>
-                            <DataGridTextColumn Header="Nazwa"
+                            <DataGridTextColumn Header="Wylot z"
                                                 IsReadOnly="True"
                                                 Width="*"
-                                                Binding="{Binding Nazwa}"/>
-                            <DataGridTextColumn Header="Zasięg"
+                                                Binding="{Binding Wylot.Nazwa}"/>
+                            <DataGridTextColumn Header="Destynacja"
                                                 IsReadOnly="True"
-                                                Binding="{Binding Zasieg}"
-                                                Width="Auto"/>
-                            <DataGridTextColumn Header="Ilość Miejsc"
+                                                Width="Auto"
+                                                Binding="{Binding Destynacja.Nazwa}"/>
+                            <DataGridTextColumn Header="Godzina"
                                                 IsReadOnly="True"
-                                                Binding="{Binding IloscMiejsc}"
-                                                Width="Auto"/>
+                                                Width="Auto"
+                                                Binding="{Binding GodzinaWylotu,  StringFormat=\{0:HH:mm\}}"/>
+                            <DataGridTextColumn Header="Odległość"
+                                                IsReadOnly="True"
+                                                Width="Auto"
+                                                Binding="{Binding Odleglosc}"/>
+                            <DataGridTextColumn Header="Częstotliwość"
+                                                IsReadOnly="True"
+                                                Width="Auto"
+                                                Binding="{Binding Czestotliwosc}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button Content="Edytuj" HorizontalAlignment="Left" Margin="10,318,0,0" Width="180" FontSize="36" Height="60" VerticalAlignment="Top" IsEnabled="False"/>
-                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36" Click="UsunTypSamolotu_Click"/>
+                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36" Click="UsunTrase_Click"/>
 
                     <Label Grid.Column="1" Height="26" Margin="10,10,0,0" Content="ID" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
                     <TextBox Name="idTrasy" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="122,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="261" IsReadOnly="True" Background="Transparent"/>
-
                     <Label Grid.Column="1" Height="26" Margin="10,40,0,0" Content="Wylot z" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
                     <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,40,0,0" VerticalAlignment="Top" Width="263">
                         <ComboBox Name="wylotTrasy">
@@ -102,11 +109,12 @@
                     <Label Grid.Column="1" Height="26" Margin="120,130,0,0" Content="Minuta" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="80"/>
                     <TextBox Name="minutaTrasy" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="220,130,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="163"/>
                     <Label Grid.Column="1" Height="26" Margin="10,160,0,0" Content="Odległość" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
-                    <TextBox Name="odlegloscTrasy" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,160,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="263"/>
+                    <TextBox Name="odlegloscTrasy" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,160,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="216"/>
+                    <Label Grid.Column="1" Height="26" Margin="341,160,0,0" Content="km" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
                     <Label Grid.Column="1" Height="26" Margin="10,190,0,0" Content="Częstotliwość co" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
                     <TextBox Name="czestotliwoscTrasy" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,190,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="216"/>
                     <Label Grid.Column="1" Height="26" Margin="341,190,0,0" Content="dni" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
-                    <Button Content="Dodaj" Grid.Column="1" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" Width="371" Height="60" FontSize="36" Click="DodajTypSamolotu_Click"/>
+                    <Button Content="Dodaj" Grid.Column="1" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" Width="371" Height="60" FontSize="36" Click="DodajTrase_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Typy Samolotów">

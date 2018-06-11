@@ -98,7 +98,9 @@ namespace Silnik
 
         public void DodajTrase(Trasa trasa)
         {
-            trasy.Add(trasa);
+            trasa.ID = trasyID;
+            trasy.Add(new Trasa(trasa));
+            trasyID++;
         }
 
         public Trasa UsunTrase(Trasa trasa)
