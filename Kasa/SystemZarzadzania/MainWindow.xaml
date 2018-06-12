@@ -42,7 +42,51 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Klienci">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Height="308" VerticalAlignment="Top" Name="listaKlientow" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"
+                                                IsReadOnly="True"
+                                                Binding="{Binding ID}"
+                                                Width="40"/>
+                            <DataGridTextColumn Header="Nazwa Pośrednika"
+                                                IsReadOnly="True"
+                                                Width="*"
+                                                Binding="{Binding Nazwa}"/>
+                            <DataGridTextColumn Header="Imie"
+                                                IsReadOnly="True"
+                                                Width="*"
+                                                Binding="{Binding Imie}"/>
+                            <DataGridTextColumn Header="Nazwisko"
+                                                IsReadOnly="True"
+                                                Width="*"
+                                                Binding="{Binding Nazwisko}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Edytuj" HorizontalAlignment="Left" Margin="10,318,0,0" Width="180" FontSize="36" Height="60" VerticalAlignment="Top" IsEnabled="False"/>
+                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36" Click="UsunKlienta_Click"/>
+
+                    <Label Grid.Column="1" Height="26" Margin="10,10,0,0" Content="ID" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <TextBox Name="idKlienta" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="122,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="261" IsReadOnly="True" Background="Transparent"/>
+                    <Label Grid.Column="1" Height="26" Margin="10,40,0,0" Content="Rodzaj Klienta" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,40,0,0" VerticalAlignment="Top" Width="263">
+                        <ComboBox Name="typKlienta" SelectionChanged="TypKlienta_SelectionChanged">
+                            <ComboBoxItem>Klient indywidualny</ComboBoxItem>
+                            <ComboBoxItem>Pośrednik</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                    <Label Name="nazwaKlientaLabel" Grid.Column="1" Height="26" Margin="10,70,0,0" Content="Nazwa" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107" Visibility="Hidden"/>
+                    <TextBox Name="nazwaKlienta" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,70,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="263" Visibility="Hidden"/>
+                    <Label Name="imieKlientaLabel" Grid.Column="1" Height="26" Margin="10,70,0,0" Content="Imie" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107" Visibility="Hidden"/>
+                    <TextBox Name="imieKlienta" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,70,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="263" Visibility="Hidden"/>
+                    <Label Name="nazwiskoKlientaLabel" Grid.Column="1" Height="26" Margin="10,100,0,0" Content="Nazwisko" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107" Visibility="Hidden"/>
+                    <TextBox Name="nazwiskoKlienta" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,100,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="263" Visibility="Hidden"/>
+                    <Button Name="dodajKlienta" Content="Dodaj" Grid.Column="1" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" Width="371" Height="60" FontSize="36" Click="DodajKlienta_Click" IsEnabled="False"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Trasy">
                 <Grid Background="#FFE5E5E5">

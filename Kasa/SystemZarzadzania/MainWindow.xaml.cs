@@ -33,6 +33,7 @@ namespace SystemZarzadzania
             typSamolotu.ItemsSource = serwer.typySamolotow;
             lotniskoSamolotu.ItemsSource = serwer.lotniska;
 
+            listaKlientow.ItemsSource = serwer.klienci;
             listaTras.ItemsSource = serwer.trasy;
             listaTypowSamolotow.ItemsSource = serwer.typySamolotow;
             listaSamolotow.ItemsSource = serwer.samoloty;
@@ -42,17 +43,86 @@ namespace SystemZarzadzania
             serwer.DodajLotnisko(new Lotnisko(0, "Ryozanpaku"));
             serwer.DodajTypSamolotu(new TypSamolotu(0, "Air Force One", 99999, 5));
 
+            NowyKlient();
             NowaTrasa();
             NoweLotnisko();
             NowySamolot();
             NowyTypSamolotu();
         }
 
+        #region Klient
+
+        private void NowyKlient()
+        {
+            idKlienta.Text = "" + serwer.klienciID;
+            nazwaKlienta.Text = "";
+            imieKlienta.Text = "";
+            nazwiskoKlienta.Text = "";
+        }
+
+        private void DodajKlienta_Click(object sender, RoutedEventArgs e)
+        {
+            switch (typKlienta.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
+            {
+                case "Klient indywidualny":
+                    if (imieKlienta.Text.Count() != 0 && nazwiskoKlienta.Text.Count() != 0)
+                    {
+                        serwer.DodajKlienta(new KlientIndywidualny(imieKlienta.Text.ToString(), nazwiskoKlienta.Text.ToString()));
+                        NowyKlient();
+                    }
+                    else MessageBox.Show("Imie i nazwisko klienta nie mogą być puste!");
+                    break;
+                case "Pośrednik":
+                    if (nazwaKlienta.Text.Count() != 0)
+                    {
+                        serwer.DodajKlienta(new Posrednik(nazwaKlienta.Text.ToString()));
+                        NowyKlient();
+                    }
+                    else MessageBox.Show("Nazwa klienta nie może być pusta!");
+                    break;
+            }
+        }
+
+        private void UsunKlienta_Click(object sender, RoutedEventArgs e)
+        {
+            Klient klient = listaKlientow.SelectedItem as Klient;
+            if (klient != null)
+            {
+                serwer.klienci.Remove(klient);
+            }
+        }
+
+        private void TypKlienta_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (typKlienta.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
+            {
+                case "Klient indywidualny":
+                    nazwaKlientaLabel.Visibility = Visibility.Hidden;
+                    nazwaKlienta.Visibility = Visibility.Hidden;
+                    imieKlientaLabel.Visibility = Visibility.Visible;
+                    imieKlienta.Visibility = Visibility.Visible;
+                    nazwiskoKlientaLabel.Visibility = Visibility.Visible;
+                    nazwiskoKlienta.Visibility = Visibility.Visible;
+                    break;
+                case "Pośrednik":
+                    nazwaKlientaLabel.Visibility = Visibility.Visible;
+                    nazwaKlienta.Visibility = Visibility.Visible;
+                    imieKlientaLabel.Visibility = Visibility.Hidden;
+                    imieKlienta.Visibility = Visibility.Hidden;
+                    nazwiskoKlientaLabel.Visibility = Visibility.Hidden;
+                    nazwiskoKlienta.Visibility = Visibility.Hidden;
+                    break;
+            }
+            dodajKlienta.IsEnabled = IsEnabled;
+        }
+
+        #endregion
+
         #region Trasa
 
         private void NowaTrasa()
         {
-            idTrasy.Text = "" + serwer.trasyID;
+            idTrasy.Text = serwer.trasyID.ToString();
             wylotTrasy.SelectedItem = null;
             destynacjaTrasy.SelectedItem = null;
             godzimaTrasy.Text = "";
@@ -70,6 +140,11 @@ namespace SystemZarzadzania
                 if (wylotTrasy.SelectedItem == null || destynacjaTrasy.SelectedItem == null)
                 {
                     MessageBox.Show("Wylot i destynacja muszą być wybrane!");
+                    return;
+                }
+                if (wylotTrasy.SelectedItem == destynacjaTrasy.SelectedItem)
+                {
+                    MessageBox.Show("Wylot i destynacja muszą być różne!");
                     return;
                 }
                 if (!Int32.TryParse(idTrasy.Text, out idAktualnejTrasy))
@@ -129,7 +204,7 @@ namespace SystemZarzadzania
 
         private void NowyTypSamolotu()
         {
-            idTypuSamolotu.Text = "" + serwer.typySamolotowID;
+            idTypuSamolotu.Text = serwer.typySamolotowID.ToString();
             nazwaTypuSamolotu.Text = "";
             zasiegTypuSamolotu.Text = "";
             iloscMiejscTypuSamolotu.Text = "";
@@ -140,7 +215,7 @@ namespace SystemZarzadzania
             int idTypu, zasieg, iloscMiejsc;
             if ((nazwaTypuSamolotu.Text.Count() != 0) && (zasiegTypuSamolotu.Text.Count() != 0) && (iloscMiejscTypuSamolotu.Text.Count() != 0))
             {
-                String nazwaTypu = "" + nazwaTypuSamolotu.Text;
+                String nazwaTypu = nazwaTypuSamolotu.Text.ToString();
                 if(!Int32.TryParse(idTypuSamolotu.Text, out idTypu))
                 {
                     MessageBox.Show("Wystąpił problem z ID!");
@@ -178,7 +253,7 @@ namespace SystemZarzadzania
 
         private void NowySamolot()
         {
-            idSamolotu.Text = "" + serwer.samolotyID;
+            idSamolotu.Text = serwer.samolotyID.ToString();
             nazwaSamolotu.Text = "";
             typSamolotu.SelectedItem = null;
             lotniskoSamolotu.SelectedItem = null;
@@ -189,7 +264,7 @@ namespace SystemZarzadzania
             int idSamolotu;
             if (nazwaSamolotu.Text.Count() != 0)
             {
-                String nazwaAktualnegoSamolotu = "" + nazwaSamolotu.Text;
+                String nazwaAktualnegoSamolotu = nazwaSamolotu.Text.ToString();
                 if (!Int32.TryParse(idTypuSamolotu.Text, out idSamolotu))
                 {
                     MessageBox.Show("Wystąpił problem z ID!");
@@ -222,7 +297,7 @@ namespace SystemZarzadzania
 
         private void NoweLotnisko()
         {
-            idLotniska.Text = "" + serwer.lotniskaID;
+            idLotniska.Text = serwer.lotniskaID.ToString();
             nazwaLotniska.Text = "";
         }
 
@@ -230,7 +305,7 @@ namespace SystemZarzadzania
         {
             if (nazwaLotniska.Text.Count() != 0)
             {
-                serwer.DodajLotnisko(new Lotnisko(Int32.Parse(idLotniska.Text), ""+nazwaLotniska.Text));
+                serwer.DodajLotnisko(new Lotnisko(Int32.Parse(idLotniska.Text), nazwaLotniska.Text.ToString()));
                 NoweLotnisko();
             }
             else MessageBox.Show("Nazwa Lotniska nie może być pusta!");
@@ -246,5 +321,10 @@ namespace SystemZarzadzania
         }
 
         #endregion
+
+        private void typKlienta_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

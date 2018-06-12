@@ -85,8 +85,9 @@ namespace Silnik
 
         public void DodajKlienta(Klient klient)
         {
-
+            klient.ID = klienciID;
             klienci.Add(klient);
+            klienciID++;
         }
 
         public Klient UsunKlienta(Klient klient)
@@ -112,7 +113,9 @@ namespace Silnik
 
         public void DodajLot(Lot lot)
         {
+            lot.ID = lotyID;
             loty.Add(lot);
+            lotyID++;
         }
 
         public Lot UsunLot(Lot lot)

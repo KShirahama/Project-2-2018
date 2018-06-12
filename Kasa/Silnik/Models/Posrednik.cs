@@ -10,6 +10,16 @@ namespace Silnik
     {
         private String nazwa;
 
+        public String Nazwa
+        {
+            get { return nazwa; }
+            set
+            {
+                nazwa = value;
+                OnPropertyChanged("Nazwa");
+            }
+        }
+
         public Posrednik(String nazwa)
         {
             this.nazwa = nazwa;
