@@ -68,7 +68,7 @@ namespace Silnik
             }
         }
 
-        public Trasa(int odleglosc, int czestotliwosc, DateTime godzinaWylotu, Lotnisko wylot, Lotnisko destynacja)
+        public Trasa(int id, int odleglosc, int czestotliwosc, DateTime godzinaWylotu, Lotnisko wylot, Lotnisko destynacja)
         {
             this.odleglosc = odleglosc;
             this.czestotliwosc = czestotliwosc;

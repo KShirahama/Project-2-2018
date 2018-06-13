@@ -16,6 +16,7 @@ namespace Silnik
         private DateTime dataWylotu;
         private int id, wolneRezerwacje;
         public ObservableCollection<Bilet> bilety;
+        private bool wTrakcie;
 
         public int ID
         {
@@ -76,6 +77,16 @@ namespace Silnik
             }
         }
 
+        public bool WTrakcie
+        {
+            get { return wTrakcie; }
+            set
+            {
+                wTrakcie = value;
+                OnPropertyChanged("WTrakcie");
+            }
+        }
+
         public Lot(Samolot samolot, Trasa trasa, DateTime dataWylotu)
         {
             this.samolot = samolot;
@@ -83,6 +94,7 @@ namespace Silnik
             this.dataWylotu = new DateTime(dataWylotu.Year, dataWylotu.Month, dataWylotu.Day, trasa.GodzinaWylotu.Hour, trasa.GodzinaWylotu.Minute, trasa.GodzinaWylotu.Second);
             wolneRezerwacje = samolot.TypSamolotu.IloscMiejsc;
             bilety = new ObservableCollection<Bilet>();
+            wTrakcie = false;
         }
 
         public Boolean RezerwujBilet(Bilet bilet)

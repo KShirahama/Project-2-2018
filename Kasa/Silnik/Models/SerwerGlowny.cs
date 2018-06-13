@@ -38,6 +38,8 @@ namespace Silnik
             klienciID = 0;
             trasyID = 0;
             lotyID = 0;
+
+            GenerujLoty();
         }
 
         public void DodajLotnisko(Lotnisko lotnisko)
@@ -45,6 +47,7 @@ namespace Silnik
             lotnisko.ID = lotniskaID;
             lotniska.Add(new Lotnisko(lotnisko));
             lotniskaID++;
+            GenerujLoty();
         }
 
         public Lotnisko UsunLotnisko(Lotnisko lotnisko)
@@ -60,6 +63,7 @@ namespace Silnik
             samolot.ID = samolotyID;
             samoloty.Add(new Samolot(samolot));
             samolotyID++;
+            GenerujLoty();
         }
 
         public Samolot UsunSamolot(Samolot samolot)
@@ -114,6 +118,7 @@ namespace Silnik
             trasa.ID = trasyID;
             trasy.Add(new Trasa(trasa));
             trasyID++;
+            GenerujLoty();
         }
 
         public Trasa UsunTrase(Trasa trasa)
@@ -133,10 +138,38 @@ namespace Silnik
         public Lot UsunLot(Lot lot)
         {
             Lot rLot = loty.FirstOrDefault(x => x == lot);  // Moze bedzie trzeba uzyc First zamiast FirstOrDefault
+            samoloty.First(x => x == rLot.Samolot).ZmienLotnisko(lotniska.FirstOrDefault(x => x.ID == rLot.Trasa.Destynacja.ID));
             loty.Remove(rLot);
             archiwum.ArchiwizujLot(rLot);
             return rLot;
         }
 
+        public void GenerujLoty()
+        {
+            DateTime data = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            foreach (Lot lot in loty)
+            {
+                if (lot.DataWylotu < data) lot.WTrakcie = true;
+                if ((lot.DataWylotu + lot.CzasPodruzy) < data)
+                {
+                    archiwum.ArchiwizujLot(lot);
+                    UsunLot(lot);
+                }
+            }
+            for (int i = 0; i < 30; ++i)
+            {
+                DateTime dataPlus = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+                foreach (Trasa trasa in trasy)
+                {
+                    if (i % trasa.Czestotliwosc != 0) break;
+                    if (samoloty.Where(x => x.AktualneLotnisko == trasa.Wylot).Count() != 0)
+
+                        dataPlus.AddDays(i);
+                        if (loty.Where(x => x.Trasa == trasa && x.DataWylotu.Day == dataPlus.Day && x.DataWylotu.Month == dataPlus.Month && x.DataWylotu.Year == dataPlus.Year).Count() == 0)
+                            DodajLot(new Lot(samoloty.FirstOrDefault(x => x.AktualneLotnisko == trasa.Wylot), trasa, dataPlus));
+                    }
+                }
+            }
+        }
     }
 }

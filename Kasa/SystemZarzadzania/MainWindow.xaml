@@ -14,23 +14,43 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid Height="308" VerticalAlignment="Top" Name="listaLotowRezerwacje" AutoGenerateColumns="False">
+                    <DataGrid Height="308" VerticalAlignment="Top" Name="listaLotowRezerwacje" AutoGenerateColumns="False" SelectedItem="{Binding Path=bilety}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID"
                                                 IsReadOnly="True"
                                                 Binding="{Binding ID}"
                                                 Width="40"/>
-                            <DataGridTextColumn Header="Nazwa"
+                            <DataGridTextColumn Header="Wylot"
                                                 IsReadOnly="True"
                                                 Width="*"
-                                                Binding="{Binding Nazwa}"/>
-                            <DataGridTextColumn Header="Zasięg"
+                                                Binding="{Binding Wylot.Nazwa}"/>
+                            <DataGridTextColumn Header="Godzina Wylotu"
                                                 IsReadOnly="True"
-                                                Binding="{Binding Zasieg}"
+                                                Binding="{Binding DataWylotu}"
                                                 Width="Auto"/>
-                            <DataGridTextColumn Header="Ilość Miejsc"
+                            <DataGridTextColumn Header="Wolne Miejsca"
                                                 IsReadOnly="True"
-                                                Binding="{Binding IloscMiejsc}"
+                                                Binding="{Binding WolneMiejsca}"
+                                                Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid Grid.Column="1" Height="308" VerticalAlignment="Top" Name="listaBiletowRezerwacje" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"
+                                                IsReadOnly="True"
+                                                Binding="{Binding ID}"
+                                                Width="40"/>
+                            <DataGridTextColumn Header="Imie"
+                                                IsReadOnly="True"
+                                                Width="*"
+                                                Binding="{Binding Klient.Imie}"/>
+                            <DataGridTextColumn Header="Godzina Wylotu"
+                                                IsReadOnly="True"
+                                                Binding="{Binding DataWylotu}"
+                                                Width="Auto"/>
+                            <DataGridTextColumn Header="Wolne Miejsca"
+                                                IsReadOnly="True"
+                                                Binding="{Binding WolneMiejsca}"
                                                 Width="Auto"/>
                         </DataGrid.Columns>
                     </DataGrid>

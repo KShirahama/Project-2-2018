@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,8 @@ namespace SystemZarzadzania
             typSamolotu.ItemsSource = serwer.typySamolotow;
             lotniskoSamolotu.ItemsSource = serwer.lotniska;
 
+            listaLotowRezerwacje.ItemsSource = serwer.loty;
+            listaBiletowRezerwacje.ItemsSource = (ObservableCollection<Bilet>)listaLotowRezerwacje.SelectedItem;
             listaKlientow.ItemsSource = serwer.klienci;
             listaTras.ItemsSource = serwer.trasy;
             listaTypowSamolotow.ItemsSource = serwer.typySamolotow;
@@ -48,6 +51,13 @@ namespace SystemZarzadzania
             NoweLotnisko();
             NowySamolot();
             NowyTypSamolotu();
+            var startTimeSpan = TimeSpan.Zero;
+            var periodTimeSpan = TimeSpan.FromMinutes(1);
+
+            var timer = new System.Threading.Timer((e) =>
+            {
+                serwer.GenerujLoty();
+            }, null, startTimeSpan, periodTimeSpan);
         }
 
         private void UsunRezerwacje_Click(object sender, RoutedEventArgs e)
@@ -187,7 +197,7 @@ namespace SystemZarzadzania
                     return;
                 }
 
-                serwer.DodajTrase(new Trasa(odleglosc, czestotliwosc, new DateTime(1,1,1, godzTrasy, minTrasy, 0), (Lotnisko)wylotTrasy.SelectedItem, (Lotnisko)destynacjaTrasy.SelectedItem));
+                serwer.DodajTrase(new Trasa(idAktualnejTrasy, odleglosc, czestotliwosc, new DateTime(1,1,1, godzTrasy, minTrasy, 0), (Lotnisko)wylotTrasy.SelectedItem, (Lotnisko)destynacjaTrasy.SelectedItem));
                 NowaTrasa();
             }
             else MessageBox.Show("Pola nie mogą być puste!");
