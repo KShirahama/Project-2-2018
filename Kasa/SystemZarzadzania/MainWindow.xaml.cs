@@ -50,6 +50,10 @@ namespace SystemZarzadzania
             NowyTypSamolotu();
         }
 
+        private void UsunRezerwacje_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
         #region Klient
 
         private void NowyKlient()

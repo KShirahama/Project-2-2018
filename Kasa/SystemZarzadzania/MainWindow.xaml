@@ -9,7 +9,34 @@
     <Grid>
         <TabControl>
             <TabItem Header="Rezerwacje">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Height="308" VerticalAlignment="Top" Name="listaLotowRezerwacje" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"
+                                                IsReadOnly="True"
+                                                Binding="{Binding ID}"
+                                                Width="40"/>
+                            <DataGridTextColumn Header="Nazwa"
+                                                IsReadOnly="True"
+                                                Width="*"
+                                                Binding="{Binding Nazwa}"/>
+                            <DataGridTextColumn Header="Zasięg"
+                                                IsReadOnly="True"
+                                                Binding="{Binding Zasieg}"
+                                                Width="Auto"/>
+                            <DataGridTextColumn Header="Ilość Miejsc"
+                                                IsReadOnly="True"
+                                                Binding="{Binding IloscMiejsc}"
+                                                Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Edytuj" HorizontalAlignment="Left" Margin="10,318,0,0" Width="180" FontSize="36" Height="60" VerticalAlignment="Top" IsEnabled="False"/>
+                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36" Click="UsunRezerwacje_Click"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Loty">
                 <Grid Background="#FFE5E5E5">

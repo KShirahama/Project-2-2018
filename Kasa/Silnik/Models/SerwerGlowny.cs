@@ -93,8 +93,20 @@ namespace Silnik
         public Klient UsunKlienta(Klient klient)
         {
             Klient rKlient = klienci.FirstOrDefault(x => x == klient);  // Moze bedzie trzeba uzyc First zamiast FirstOrDefault
+            UsunBilety(rKlient);
             klienci.Remove(rKlient);
             return rKlient;
+        }
+
+        public void UsunBilety(Klient klient)
+        {
+            foreach(Lot lot in loty.Select(x => x.bilety.Where(y => y.Klient == klient)))
+            {
+                foreach (Bilet bilet in lot.bilety.Where(x => x.Klient == klient).ToList())
+                {
+                    lot.UsunBilet(bilet);
+                }
+            }
         }
 
         public void DodajTrase(Trasa trasa)

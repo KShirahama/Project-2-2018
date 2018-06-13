@@ -84,6 +84,23 @@ namespace Silnik
             wolneRezerwacje = samolot.TypSamolotu.IloscMiejsc;
             bilety = new ObservableCollection<Bilet>();
         }
-    }
 
+        public Boolean RezerwujBilet(Bilet bilet)
+        {
+            if (wolneRezerwacje <= 0)
+            {
+                wolneRezerwacje = 0;
+                return false;
+            }
+            bilety.Add(bilet);
+            wolneRezerwacje--;
+            return true;
+        }
+
+        public void UsunBilet(Bilet bilet)
+        {
+            bilety.Remove(bilety.FirstOrDefault(x => x == bilet));
+            wolneRezerwacje++;
+        }
+    }
 }
