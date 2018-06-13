@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 
 namespace Silnik
-{
+{   [Serializable]
     public class SerwerGlowny : PodstawowaKlasaPowiadomien
     {
         public ObservableCollection<Lotnisko> lotniska;

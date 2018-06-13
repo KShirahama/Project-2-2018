@@ -15,12 +15,28 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Silnik;
 using Silnik.Models;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace SystemZarzadzania
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
+    public FileStream mStream = new FileStream("C:\\ProgramTestowy\\data.dat", FileMode.Create);
+		BinaryFormatter Formation = new BinaryFormatter();
+		public void mainSerialize()
+		{
+			Formation.Serialize(mStream,serwer);
+			mStream.Close();
+		}
+		public void mainDeserialize()
+		{
+			FileStream openStream = new FileStream("C:\\ProgramTestowy\\data.dat", FileMode.Open);
+			serwer = (SerwerGlowny)Formation.Deserialize(openStream);	
+		}
+    
     public partial class MainWindow : Window
     {
         SerwerGlowny serwer = new SerwerGlowny();
