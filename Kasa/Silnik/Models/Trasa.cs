@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Silnik
 {
+    [Serializable]
     public class Trasa : PodstawowaKlasaPowiadomien
     {
         private int id, odleglosc, czestotliwosc;

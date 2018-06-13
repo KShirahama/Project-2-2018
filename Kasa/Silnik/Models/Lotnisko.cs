@@ -8,6 +8,7 @@ using Engine;
 
 namespace Silnik
 {
+    [Serializable]
     public class Lotnisko : PodstawowaKlasaPowiadomien
     {
         private int id;

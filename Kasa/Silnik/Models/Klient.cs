@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Silnik
 {
+    [Serializable]
     public class Klient :PodstawowaKlasaPowiadomien
     {
         private int id;

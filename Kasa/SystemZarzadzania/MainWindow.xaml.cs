@@ -20,30 +20,43 @@ using System.IO;
 
 namespace SystemZarzadzania
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    
-    public FileStream mStream = new FileStream("C:\\ProgramTestowy\\data.dat", FileMode.Create);
-		BinaryFormatter Formation = new BinaryFormatter();
-		public void mainSerialize()
-		{
-			Formation.Serialize(mStream,serwer);
-			mStream.Close();
-		}
-		public void mainDeserialize()
-		{
-			FileStream openStream = new FileStream("C:\\ProgramTestowy\\data.dat", FileMode.Open);
-			serwer = (SerwerGlowny)Formation.Deserialize(openStream);	
-		}
     
     public partial class MainWindow : Window
     {
-        SerwerGlowny serwer = new SerwerGlowny();
+        SerwerGlowny serwer;
+
+        BinaryFormatter Formation = new BinaryFormatter();
+        public void mainSerialize()
+        {
+            FileStream mStream = new FileStream("C:\\ProgramTestowy\\data.dat", FileMode.Create);
+            Formation.Serialize(mStream, serwer);
+            mStream.Close();
+        }
+        public void mainDeserialize()
+        {
+            FileStream openStream = new FileStream("C:\\ProgramTestowy\\data.dat", FileMode.Open);
+            serwer = (SerwerGlowny)Formation.Deserialize(openStream);
+            openStream.Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            mainSerialize();
+        }
 
         public MainWindow()
         {
             InitializeComponent();
+            try
+            {
+                mainDeserialize();
+            }
+            catch (Exception)
+            {
+
+                serwer = new SerwerGlowny();
+            }
+            
 
             wylotTrasy.ItemsSource = serwer.lotniska;
             destynacjaTrasy.ItemsSource = serwer.lotniska;
@@ -57,10 +70,6 @@ namespace SystemZarzadzania
             listaTypowSamolotow.ItemsSource = serwer.typySamolotow;
             listaSamolotow.ItemsSource = serwer.samoloty;
             listaLotnisk.ItemsSource = serwer.lotniska;
-
-            serwer.DodajLotnisko(new Lotnisko(1, "Yami"));
-            serwer.DodajLotnisko(new Lotnisko(0, "Ryozanpaku"));
-            serwer.DodajTypSamolotu(new TypSamolotu(0, "Air Force One", 99999, 5));
 
             NowyKlient();
             NowaTrasa();

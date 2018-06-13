@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 
 namespace Silnik
 {
+    [Serializable]
     public class Lot : PodstawowaKlasaPowiadomien
     {
         private Samolot samolot;
@@ -95,6 +96,18 @@ namespace Silnik
             wolneRezerwacje = samolot.TypSamolotu.IloscMiejsc;
             bilety = new ObservableCollection<Bilet>();
             wTrakcie = false;
+        }
+
+        public Lot(Lot lot)
+        {
+            id = lot.id;
+            samolot = lot.samolot;
+            trasa = lot.trasa;
+            dataWylotu = lot.dataWylotu;
+            czasPodruzy = lot.czasPodruzy;
+            wolneRezerwacje = lot.wolneRezerwacje;
+            bilety = lot.bilety;
+            wTrakcie = lot.wTrakcie;
         }
 
         public Boolean RezerwujBilet(Bilet bilet)

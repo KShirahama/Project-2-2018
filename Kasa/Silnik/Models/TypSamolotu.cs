@@ -7,6 +7,7 @@ using Engine;
 
 namespace Silnik.Models
 {
+    [Serializable]
     public class TypSamolotu : PodstawowaKlasaPowiadomien
     {
         private int id, zasieg, iloscMiejsc;

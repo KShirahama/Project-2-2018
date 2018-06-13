@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Silnik
 {
+    [Serializable]
     public class Posrednik : Klient
     {
         private String nazwa;

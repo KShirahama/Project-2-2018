@@ -8,6 +8,7 @@ using Engine;
 
 namespace Silnik
 {
+    [Serializable]
     public class Samolot : PodstawowaKlasaPowiadomien
     {
         private String nazwa;
