@@ -17,76 +17,87 @@
                     </Grid.ColumnDefinitions>
                     <DataGrid Height="308" VerticalAlignment="Top" Name="listaLotowRezerwacje" AutoGenerateColumns="False" SelectedItem="{Binding Path=bilety}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID"
-                                                IsReadOnly="True"
-                                                Binding="{Binding ID}"
-                                                Width="40"/>
                             <DataGridTextColumn Header="Wylot"
                                                 IsReadOnly="True"
-                                                Width="*"
-                                                Binding="{Binding Wylot.Nazwa}"/>
-                            <DataGridTextColumn Header="Godzina Wylotu"
+                                                Binding="{Binding Trasa.Wylot.Nazwa}"
+                                                Width="Auto"/>
+                            <DataGridTextColumn Header="Destynacja"
+                                                IsReadOnly="True"
+                                                Binding="{Binding Trasa.Destynacja.Nazwa}"
+                                                Width="Auto"/>
+                            <DataGridTextColumn Header="Data wylotu"
                                                 IsReadOnly="True"
                                                 Binding="{Binding DataWylotu}"
                                                 Width="Auto"/>
-                            <DataGridTextColumn Header="Wolne Miejsca"
+                            <DataGridTextColumn Header="Data przylotu"
                                                 IsReadOnly="True"
-                                                Binding="{Binding WolneMiejsca}"
-                                                Width="Auto"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <DataGrid Grid.Column="1" Height="308" VerticalAlignment="Top" Name="listaBiletowRezerwacje" AutoGenerateColumns="False">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID"
-                                                IsReadOnly="True"
-                                                Binding="{Binding ID}"
-                                                Width="40"/>
-                            <DataGridTextColumn Header="Imie"
-                                                IsReadOnly="True"
-                                                Width="*"
-                                                Binding="{Binding Klient.Imie}"/>
-                            <DataGridTextColumn Header="Godzina Wylotu"
-                                                IsReadOnly="True"
-                                                Binding="{Binding DataWylotu}"
+                                                Binding="{Binding DataPrzylotu}"
                                                 Width="Auto"/>
                             <DataGridTextColumn Header="Wolne Miejsca"
                                                 IsReadOnly="True"
-                                                Binding="{Binding WolneMiejsca}"
+                                                Binding="{Binding WolneRezerwacje}"
                                                 Width="Auto"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Edytuj" HorizontalAlignment="Left" Margin="10,318,0,0" Width="180" FontSize="36" Height="60" VerticalAlignment="Top" IsEnabled="False"/>
-                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36" Click="UsunRezerwacje_Click"/>
+                    <Button Content="Usuń" Margin="10,318,0,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Left" Width="373" FontSize="36" Click="UsunRezerwacje_Click" IsEnabled="False"/>
+
+                    <Label Grid.Column="1" Height="26" Margin="10,10,0,0" Content="ID" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <TextBox Name="idRezerwacji" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="122,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="261" IsReadOnly="True" Background="Transparent"/>
+                    <Label Grid.Column="1" Height="26" Margin="10,40,0,0" Content="Cena" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <TextBox Name="cenaRezerwacji" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,40,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="263"/>
+                    <Label Grid.Column="1" Height="26" Margin="10,70,0,0" Content="Ilość" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <TextBox Name="iloscRezerwacji" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,70,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="263"/>
+                    <Label Grid.Column="1" Height="26" Margin="10,100,0,0" Content="Klient" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="120,100,0,0" VerticalAlignment="Top" Width="263">
+                        <ComboBox Name="klientRezerwacji">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Width="50" Text="{Binding Path=Nazwa}" />
+                                        <TextBlock Width="50" Text="{Binding Path=Imie}" />
+                                        <TextBlock Width="50" Text="{Binding Path=Nazwisko}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                    <Button Content="Dodaj" Grid.Column="1" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" Width="371" Height="60" FontSize="36" Click="DodajRezerwacje_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Loty">
                 <Grid Background="#FFE5E5E5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <DataGrid Height="308" VerticalAlignment="Top" Name="listaLotow" AutoGenerateColumns="False">
+                    <DataGrid VerticalAlignment="Top" Name="listaLotow" AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID"
                                                 IsReadOnly="True"
                                                 Binding="{Binding ID}"
                                                 Width="40"/>
-                            <DataGridTextColumn Header="Nazwa"
+                            <DataGridTextColumn Header="Samolot"
                                                 IsReadOnly="True"
-                                                Width="*"
-                                                Binding="{Binding Nazwa}"/>
-                            <DataGridTextColumn Header="Zasięg"
+                                                Width="Auto"
+                                                Binding="{Binding Samolot.Nazwa}"/>
+                            <DataGridTextColumn Header="Wylot"
                                                 IsReadOnly="True"
-                                                Binding="{Binding Zasieg}"
+                                                Binding="{Binding Trasa.Wylot.Nazwa}"
                                                 Width="Auto"/>
-                            <DataGridTextColumn Header="Ilość Miejsc"
+                            <DataGridTextColumn Header="Destynacja"
                                                 IsReadOnly="True"
-                                                Binding="{Binding IloscMiejsc}"
+                                                Binding="{Binding Trasa.Destynacja.Nazwa}"
+                                                Width="Auto"/>
+                            <DataGridTextColumn Header="Data wylotu"
+                                                IsReadOnly="True"
+                                                Binding="{Binding DataWylotu}"
+                                                Width="Auto"/>
+                            <DataGridTextColumn Header="Data przylotu"
+                                                IsReadOnly="True"
+                                                Binding="{Binding DataPrzylotu}"
+                                                Width="Auto"/>
+                            <DataGridTextColumn Header="Wolne Miejsca"
+                                                IsReadOnly="True"
+                                                Binding="{Binding WolneRezerwacje}"
                                                 Width="Auto"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Edytuj" HorizontalAlignment="Left" Margin="10,318,0,0" Width="180" FontSize="36" Height="60" VerticalAlignment="Top" IsEnabled="False"/>
-                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36" Click="UsunTypSamolotu_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Klienci">
@@ -115,8 +126,7 @@
                                                 Binding="{Binding Nazwisko}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Edytuj" HorizontalAlignment="Left" Margin="10,318,0,0" Width="180" FontSize="36" Height="60" VerticalAlignment="Top" IsEnabled="False"/>
-                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36" Click="UsunKlienta_Click"/>
+                    <Button Content="Usuń" Margin="10,318,0,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Left" Width="373" FontSize="36" Click="UsunKlienta_Click"/>
 
                     <Label Grid.Column="1" Height="26" Margin="10,10,0,0" Content="ID" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
                     <TextBox Name="idKlienta" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="122,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="261" IsReadOnly="True" Background="Transparent"/>
@@ -170,8 +180,7 @@
                                                 Binding="{Binding Czestotliwosc}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Edytuj" HorizontalAlignment="Left" Margin="10,318,0,0" Width="180" FontSize="36" Height="60" VerticalAlignment="Top" IsEnabled="False"/>
-                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36" Click="UsunTrase_Click"/>
+                    <Button Content="Usuń" Margin="10,318,0,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Left" Width="373" FontSize="36" Click="UsunTrase_Click"/>
 
                     <Label Grid.Column="1" Height="26" Margin="10,10,0,0" Content="ID" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
                     <TextBox Name="idTrasy" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="122,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="261" IsReadOnly="True" Background="Transparent"/>
@@ -235,8 +244,7 @@
                                                 Width="Auto"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Edytuj" HorizontalAlignment="Left" Margin="10,318,0,0" Width="180" FontSize="36" Height="60" VerticalAlignment="Top" IsEnabled="False"/>
-                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36" Click="UsunTypSamolotu_Click"/>
+                    <Button Content="Usuń" Margin="10,318,0,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Left" Width="373" FontSize="36" Click="UsunTypSamolotu_Click"/>
 
                     <Label Grid.Column="1" Height="26" Margin="10,10,0,0" Content="ID" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
                     <TextBox Name="idTypuSamolotu" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="122,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="261" IsReadOnly="True" Background="Transparent"/>
@@ -275,8 +283,7 @@
                                                 Width="Auto"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Edytuj" HorizontalAlignment="Left" Margin="10,318,0,0" Width="180" FontSize="36" Height="60" VerticalAlignment="Top" IsEnabled="False"/>
-                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36" Click="UsunSamolot_Click"/>
+                    <Button Content="Usuń" Margin="10,318,0,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Left" Width="373" FontSize="36" Click="UsunSamolot_Click"/>
 
                     <Label Grid.Column="1" Height="26" Margin="10,10,0,0" Content="ID" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
                     <TextBox Name="idSamolotu" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="122,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="261" IsReadOnly="True" Background="Transparent"/>
@@ -327,8 +334,7 @@
                                                 Width="Auto"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button Content="Edytuj" HorizontalAlignment="Left" Margin="10,318,0,0" Width="180" FontSize="36" Height="60" VerticalAlignment="Top" IsEnabled="False"/>
-                    <Button Content="Usuń" Margin="0,318,10,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Right" Width="180" FontSize="36" Click="UsunLotnisko_Click"/>
+                    <Button Content="Usuń" Margin="10,318,0,0" VerticalAlignment="Top" Height="60" HorizontalAlignment="Left" Width="373" FontSize="36" Click="UsunLotnisko_Click"/>
 
                     <Label Grid.Column="1" Height="26" Margin="10,10,0,0" Content="ID" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107"/>
                     <TextBox Name="idLotniska" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="122,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="261" IsReadOnly="True" Background="Transparent"/>
@@ -338,7 +344,40 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Archiwum">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid VerticalAlignment="Top" Name="listaArchiwum" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID"
+                                                IsReadOnly="True"
+                                                Binding="{Binding ID}"
+                                                Width="40"/>
+                            <DataGridTextColumn Header="Samolot"
+                                                IsReadOnly="True"
+                                                Width="Auto"
+                                                Binding="{Binding Samolot.Nazwa}"/>
+                            <DataGridTextColumn Header="Wylot"
+                                                IsReadOnly="True"
+                                                Binding="{Binding Trasa.Wylot.Nazwa}"
+                                                Width="Auto"/>
+                            <DataGridTextColumn Header="Destynacja"
+                                                IsReadOnly="True"
+                                                Binding="{Binding Trasa.Destynacja.Nazwa}"
+                                                Width="Auto"/>
+                            <DataGridTextColumn Header="Data wylotu"
+                                                IsReadOnly="True"
+                                                Binding="{Binding DataWylotu}"
+                                                Width="Auto"/>
+                            <DataGridTextColumn Header="Data przylotu"
+                                                IsReadOnly="True"
+                                                Binding="{Binding DataPrzylotu}"
+                                                Width="Auto"/>
+                            <DataGridTextColumn Header="Rezerwacje"
+                                                IsReadOnly="True"
+                                                Binding="{Binding Rezerwacje}"
+                                                Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </TabItem>
         </TabControl>
 

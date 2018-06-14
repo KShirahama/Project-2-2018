@@ -28,13 +28,13 @@ namespace SystemZarzadzania
         BinaryFormatter Formation = new BinaryFormatter();
         public void mainSerialize()
         {
-            FileStream mStream = new FileStream("C:\\ProgramTestowy\\data.dat", FileMode.Create);
+            FileStream mStream = new FileStream(AppDomain.CurrentDomain.BaseDirectory+"data.dat", FileMode.Create);
             Formation.Serialize(mStream, serwer);
             mStream.Close();
         }
         public void mainDeserialize()
         {
-            FileStream openStream = new FileStream("C:\\ProgramTestowy\\data.dat", FileMode.Open);
+            FileStream openStream = new FileStream(AppDomain.CurrentDomain.BaseDirectory+"data.dat", FileMode.Open);
             serwer = (SerwerGlowny)Formation.Deserialize(openStream);
             openStream.Close();
         }
@@ -56,26 +56,28 @@ namespace SystemZarzadzania
 
                 serwer = new SerwerGlowny();
             }
-            
 
+            klientRezerwacji.ItemsSource = serwer.klienci;
             wylotTrasy.ItemsSource = serwer.lotniska;
             destynacjaTrasy.ItemsSource = serwer.lotniska;
             typSamolotu.ItemsSource = serwer.typySamolotow;
             lotniskoSamolotu.ItemsSource = serwer.lotniska;
 
             listaLotowRezerwacje.ItemsSource = serwer.loty;
-            listaBiletowRezerwacje.ItemsSource = (ObservableCollection<Bilet>)listaLotowRezerwacje.SelectedItem;
+            //listaBiletowRezerwacje.ItemsSource = (ObservableCollection<Bilet>)listaLotowRezerwacje.SelectedItem;
             listaKlientow.ItemsSource = serwer.klienci;
             listaTras.ItemsSource = serwer.trasy;
             listaTypowSamolotow.ItemsSource = serwer.typySamolotow;
             listaSamolotow.ItemsSource = serwer.samoloty;
             listaLotnisk.ItemsSource = serwer.lotniska;
+            listaArchiwum.ItemsSource = serwer.archiwum.loty;
 
             NowyKlient();
             NowaTrasa();
             NoweLotnisko();
             NowySamolot();
             NowyTypSamolotu();
+            NowaRezerwacja();
             var startTimeSpan = TimeSpan.Zero;
             var periodTimeSpan = TimeSpan.FromMinutes(1);
 
@@ -85,9 +87,56 @@ namespace SystemZarzadzania
             }, null, startTimeSpan, periodTimeSpan);
         }
 
+        #region Rezerwacje
+
+        private void NowaRezerwacja()
+        {
+            idRezerwacji.Text = "" + serwer.rezerwacjeID;
+            cenaRezerwacji.Text = "";
+            iloscRezerwacji.Text = "";
+            klientRezerwacji.SelectedItem = null;
+        }
+
+        private void DodajRezerwacje_Click(object sender, RoutedEventArgs e)
+        {
+            int id, cena, ilosc;
+            if ((cenaRezerwacji.Text.Count() != 0) && (iloscRezerwacji.Text.Count() != 0))
+            {
+                String nazwaTypu = nazwaTypuSamolotu.Text.ToString();
+                if (!Int32.TryParse(idRezerwacji.Text, out id))
+                {
+                    MessageBox.Show("Wystąpił problem z ID!");
+                    return;
+                }
+                if (!Int32.TryParse(iloscRezerwacji.Text, out ilosc))
+                {
+                    MessageBox.Show("Ilość musi być liczbą!");
+                    return;
+                }
+                if (!Int32.TryParse(cenaRezerwacji.Text, out cena))
+                {
+                    MessageBox.Show("Cena musi być liczbą!");
+                    return;
+                }
+                if (klientRezerwacji.SelectedItem == null || listaLotowRezerwacje.SelectedItem == null)
+                {
+                    MessageBox.Show("Klient musi być wybrany!");
+                    return;
+                }
+                for (int i = 0; i < ilosc; i++)
+                {
+                    serwer.loty.FirstOrDefault(x => x == listaLotowRezerwacje.SelectedItem).RezerwujBilet(new Bilet((Klient)klientRezerwacji.SelectedItem, cena / ilosc, id));
+                }
+                NowaRezerwacja();
+            }
+            else MessageBox.Show("Pola nie mogą być puste!");
+        }
+
         private void UsunRezerwacje_Click(object sender, RoutedEventArgs e)
         {
         }
+
+        #endregion
 
         #region Klient
 

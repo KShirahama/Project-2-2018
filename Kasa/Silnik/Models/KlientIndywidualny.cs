@@ -6,11 +6,21 @@ using System.Threading.Tasks;
 
 namespace Silnik
 {
+    /// <summary>
+    /// Klient class
+    /// Represents individual clients.
+    /// </summary>
     [Serializable]
     public class KlientIndywidualny : Klient
     {
+        /// <summary>
+        /// Stores Imie and Nazwisko
+        /// </summary>
         private String imie, nazwisko;
 
+        /// <summary>
+        /// Gets and sets Imie
+        /// </summary>
         public String Imie
         {
             get { return imie; }
@@ -20,6 +30,9 @@ namespace Silnik
                 OnPropertyChanged("Imie");
             }
         }
+        /// <summary>
+        /// Gets and sets Nazwisko
+        /// </summary>
         public String Nazwisko
         {
             get { return nazwisko; }
@@ -30,6 +43,11 @@ namespace Silnik
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KlientIndywidualny"/> class.
+        /// </summary>
+        /// <param name="imie">Name of person</param>
+        /// <param name="nazwisko">Surname of person</param>
         public KlientIndywidualny(String imie, String nazwisko)
         {
             this.imie = imie;

@@ -15,6 +15,7 @@ namespace Silnik
         private int id;
         private TypSamolotu typSamolotu;
         private Lotnisko aktualneLotnisko;
+        private bool przydzielony;
 
         public int ID
         {
@@ -56,12 +57,23 @@ namespace Silnik
             }
         }
 
+        public bool Przydzielony
+        {
+            get { return przydzielony; }
+            set
+            {
+                przydzielony = value;
+                OnPropertyChanged("Przydzielony");
+            }
+        }
+
         public Samolot(String nazwa, int id, TypSamolotu typ, Lotnisko lotnisko)
         {
             this.nazwa = nazwa;
             this.id = id;
             typSamolotu = typ;
             aktualneLotnisko = lotnisko;
+            przydzielony = false;
         }
 
         public Samolot(Samolot samolot)
@@ -70,11 +82,13 @@ namespace Silnik
             this.id = samolot.id;
             typSamolotu = samolot.typSamolotu;
             aktualneLotnisko = samolot.aktualneLotnisko;
+            przydzielony = samolot.przydzielony;
         }
 
         public void ZmienLotnisko(Lotnisko lotnisko)
         {
             aktualneLotnisko = lotnisko;
+            przydzielony = false;
         }
     }
 }

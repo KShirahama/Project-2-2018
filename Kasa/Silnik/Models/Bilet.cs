@@ -7,13 +7,29 @@ using System.Threading.Tasks;
 
 namespace Silnik
 {
+    /// <summary>
+    /// The main Bilet class.
+    /// Represents ticket and it values.
+    /// </summary>
     [Serializable]
     public class Bilet : PodstawowaKlasaPowiadomien
     {
+        /// <summary>
+        /// Stores Klient
+        /// </summary>
         private Klient klient;
+        /// <summary>
+        /// Stores Cena
+        /// </summary>
         private int cena;
+        /// <summary>
+        /// Stores ID
+        /// </summary>
         private int id;
 
+        /// <summary>
+        /// Gets and sets id
+        /// </summary>
         public int ID
         {
             get { return ID; }
@@ -23,6 +39,9 @@ namespace Silnik
                 OnPropertyChanged("ID");
             }
         }
+        /// <summary>
+        /// Gets and sets Cena
+        /// </summary>
         public int Cena
         {
             get { return cena; }
@@ -32,6 +51,9 @@ namespace Silnik
                 OnPropertyChanged("Cena");
             }
         }
+        /// <summary>
+        /// Gets and sets Klient
+        /// </summary>
         public Klient Klient
         {
             get { return klient; }
@@ -42,6 +64,7 @@ namespace Silnik
             }
         }
 
+        /// <summary>Initializes a new instance of the <see cref="Bilet"/> class.</summary>
         public Bilet(Klient klient, int cena, int ID)
         {
             this.klient = klient;

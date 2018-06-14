@@ -21,7 +21,7 @@ namespace Silnik
         public ObservableCollection<Trasa> trasy;
         public ObservableCollection<Lot> loty;
         public Archiwum archiwum;
-        public int lotniskaID, typySamolotowID, samolotyID, klienciID, trasyID, lotyID;
+        public int lotniskaID, typySamolotowID, samolotyID, klienciID, trasyID, lotyID, rezerwacjeID;
         
 
         public SerwerGlowny()
@@ -140,7 +140,6 @@ namespace Silnik
         public Lot UsunLot(Lot lot)
         {
             Lot rLot = loty.FirstOrDefault(x => x == lot);  // Moze bedzie trzeba uzyc First zamiast FirstOrDefault
-            samoloty.Add(lot.Samolot);
             samoloty.First(x => x == rLot.Samolot).ZmienLotnisko(lotniska.FirstOrDefault(x => x.ID == rLot.Trasa.Destynacja.ID));
             loty.Remove(rLot);
             archiwum.ArchiwizujLot(rLot);
@@ -156,6 +155,7 @@ namespace Silnik
                 if ((lot.DataWylotu + lot.CzasPodruzy) < data)
                 {
                     archiwum.ArchiwizujLot(lot);
+                    samoloty.FirstOrDefault(x => x == lot.Samolot).ZmienLotnisko(lot.Trasa.Destynacja);
                     UsunLot(lot);
                 }
             }
@@ -165,13 +165,13 @@ namespace Silnik
                 foreach (Trasa trasa in trasy)
                 {
                     if (i % trasa.Czestotliwosc != 0) break;
-                    if (samoloty.Where(x => x.AktualneLotnisko == trasa.Wylot).Count() != 0)
+                    if (samoloty.Where(x => x.AktualneLotnisko == trasa.Wylot && x.Przydzielony == false && x.TypSamolotu.Zasieg >= trasa.Odleglosc).Count() != 0)
                     {
                         dataPlus = dataPlus.AddDays(i);
                         if (loty.Where(x => x.Trasa == trasa && x.DataWylotu.Day == dataPlus.Day && x.DataWylotu.Month == dataPlus.Month && x.DataWylotu.Year == dataPlus.Year).Count() == 0)
                         {
-                            DodajLot(new Lot(samoloty.FirstOrDefault(x => x.AktualneLotnisko == trasa.Wylot), trasa, dataPlus));
-                            UsunSamolot(samoloty.FirstOrDefault(x => x.AktualneLotnisko == trasa.Wylot));
+                            DodajLot(new Lot(samoloty.FirstOrDefault(x => x.AktualneLotnisko == trasa.Wylot && x.Przydzielony == false && x.TypSamolotu.Zasieg >= trasa.Odleglosc), trasa, dataPlus));
+                            samoloty.FirstOrDefault(x => x.AktualneLotnisko == trasa.Wylot).Przydzielony = true;
                         }
                     }
                 }
