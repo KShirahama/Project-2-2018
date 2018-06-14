@@ -1,0 +1,6 @@
+Kamil Klosowski
+	Implementacja obiektów na podstawie UML
+	Serializacja
+Damian Dabrowski
+	Utworzenie i implementacja UI graficznego
+	Generowanie Lotów

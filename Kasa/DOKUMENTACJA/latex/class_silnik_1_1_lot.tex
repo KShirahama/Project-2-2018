@@ -1,0 +1,240 @@
+\hypertarget{class_silnik_1_1_lot}{}\section{Silnik.\+Lot Class Reference}
+\label{class_silnik_1_1_lot}\index{Silnik.\+Lot@{Silnik.\+Lot}}
+
+
+Base \mbox{\hyperlink{class_silnik_1_1_lot}{Lot}} class Represents flight.  
+
+
+Inheritance diagram for Silnik.\+Lot\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_silnik_1_1_lot}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_silnik_1_1_lot_a6ff9543d81086a250b1c2517135e2499}{Lot}} (\mbox{\hyperlink{class_silnik_1_1_samolot}{Samolot}} samolot, \mbox{\hyperlink{class_silnik_1_1_trasa}{Trasa}} trasa, Date\+Time data\+Wylotu)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \mbox{\hyperlink{class_silnik_1_1_lot}{Lot}} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_silnik_1_1_lot_a68a9f13aa20a3cfab653d70c227b70ca}{Lot}} (\mbox{\hyperlink{class_silnik_1_1_lot}{Lot}} lot)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the \mbox{\hyperlink{class_silnik_1_1_lot}{Lot}} class by coping paramethers of other. \end{DoxyCompactList}\item 
+Boolean \mbox{\hyperlink{class_silnik_1_1_lot_a2623d91a3f8fb942ece1fc785465e5a5}{Rezerwuj\+Bilet}} (\mbox{\hyperlink{class_silnik_1_1_bilet}{Bilet}} bilet)
+\begin{DoxyCompactList}\small\item\em Adds \mbox{\hyperlink{class_silnik_1_1_bilet}{Bilet}} to class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_silnik_1_1_lot_afc434618b4f20dd9aeb67db0adda5252}{Usun\+Bilet}} (\mbox{\hyperlink{class_silnik_1_1_bilet}{Bilet}} bilet)
+\begin{DoxyCompactList}\small\item\em Removes \mbox{\hyperlink{class_silnik_1_1_bilet}{Bilet}} from class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Observable\+Collection$<$ \mbox{\hyperlink{class_silnik_1_1_bilet}{Bilet}} $>$ \mbox{\hyperlink{class_silnik_1_1_lot_a3e02a16efd94bb1428ee6f3a34aacd8d}{bilety}}
+\begin{DoxyCompactList}\small\item\em Stores Bilety\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_silnik_1_1_lot_afa780f21019d3396c86f1d0e67a0a02a}{ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets and sets ID \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_silnik_1_1_samolot}{Samolot}} \mbox{\hyperlink{class_silnik_1_1_lot_ad8823384ab258305bbc2dd1baee4eadd}{Samolot}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets and sets \mbox{\hyperlink{class_silnik_1_1_samolot}{Samolot}} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_silnik_1_1_trasa}{Trasa}} \mbox{\hyperlink{class_silnik_1_1_lot_a665ef105afa7a29ee7870c720b762d6e}{Trasa}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets and sets \mbox{\hyperlink{class_silnik_1_1_trasa}{Trasa}} \end{DoxyCompactList}\item 
+Time\+Span \mbox{\hyperlink{class_silnik_1_1_lot_a7a4e0de2fff28c39b2f81a330235d1bd}{Czas\+Podruzy}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets and sets Czas\+Podruzy \end{DoxyCompactList}\item 
+Date\+Time \mbox{\hyperlink{class_silnik_1_1_lot_abff1662fa3776aab3d8889374bfb85f2}{Data\+Wylotu}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets and sets Data\+Wylotu \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_silnik_1_1_lot_af5d78c458695021ff86158728209c31b}{Wolne\+Rezerwacje}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets and sets Wolne\+Rezerwacje \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_silnik_1_1_lot_a8246b195b85797bb116d4b1ac61c8082}{W\+Trakcie}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets and sets W\+Trakcie \end{DoxyCompactList}\item 
+Date\+Time \mbox{\hyperlink{class_silnik_1_1_lot_ac3b72a8fbb28b3dbbab0849caeec3aa9}{Data\+Przylotu}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets automatic paramether Data\+Przylotu \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_silnik_1_1_lot_a9adba13eadf70435a63a5ecd9ed20cd2}{Rezerwacje}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets automatic paramether Rezerwacje \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Base \mbox{\hyperlink{class_silnik_1_1_lot}{Lot}} class Represents flight. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_silnik_1_1_lot_a6ff9543d81086a250b1c2517135e2499}\label{class_silnik_1_1_lot_a6ff9543d81086a250b1c2517135e2499}} 
+\index{Silnik\+::\+Lot@{Silnik\+::\+Lot}!Lot@{Lot}}
+\index{Lot@{Lot}!Silnik\+::\+Lot@{Silnik\+::\+Lot}}
+\subsubsection{\texorpdfstring{Lot()}{Lot()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Silnik.\+Lot.\+Lot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_silnik_1_1_samolot}{Samolot}}}]{samolot,  }\item[{\mbox{\hyperlink{class_silnik_1_1_trasa}{Trasa}}}]{trasa,  }\item[{Date\+Time}]{data\+Wylotu }\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \mbox{\hyperlink{class_silnik_1_1_lot}{Lot}} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Wylotu} & Departure date.\\
+\hline
+{\em samolot} & Plane to be used.\\
+\hline
+{\em trasa} & Flight route to be taken.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_silnik_1_1_lot_a68a9f13aa20a3cfab653d70c227b70ca}\label{class_silnik_1_1_lot_a68a9f13aa20a3cfab653d70c227b70ca}} 
+\index{Silnik\+::\+Lot@{Silnik\+::\+Lot}!Lot@{Lot}}
+\index{Lot@{Lot}!Silnik\+::\+Lot@{Silnik\+::\+Lot}}
+\subsubsection{\texorpdfstring{Lot()}{Lot()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Silnik.\+Lot.\+Lot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_silnik_1_1_lot}{Lot}}}]{lot }\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the \mbox{\hyperlink{class_silnik_1_1_lot}{Lot}} class by coping paramethers of other. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lot} & Flight to be copied\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_silnik_1_1_lot_a2623d91a3f8fb942ece1fc785465e5a5}\label{class_silnik_1_1_lot_a2623d91a3f8fb942ece1fc785465e5a5}} 
+\index{Silnik\+::\+Lot@{Silnik\+::\+Lot}!Rezerwuj\+Bilet@{Rezerwuj\+Bilet}}
+\index{Rezerwuj\+Bilet@{Rezerwuj\+Bilet}!Silnik\+::\+Lot@{Silnik\+::\+Lot}}
+\subsubsection{\texorpdfstring{Rezerwuj\+Bilet()}{RezerwujBilet()}}
+{\footnotesize\ttfamily Boolean Silnik.\+Lot.\+Rezerwuj\+Bilet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_silnik_1_1_bilet}{Bilet}}}]{bilet }\end{DoxyParamCaption})}
+
+
+
+Adds \mbox{\hyperlink{class_silnik_1_1_bilet}{Bilet}} to class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bilet} & Ticket to be added.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if bilet could be added; otherwise {\ttfamily false}.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_silnik_1_1_lot_afc434618b4f20dd9aeb67db0adda5252}\label{class_silnik_1_1_lot_afc434618b4f20dd9aeb67db0adda5252}} 
+\index{Silnik\+::\+Lot@{Silnik\+::\+Lot}!Usun\+Bilet@{Usun\+Bilet}}
+\index{Usun\+Bilet@{Usun\+Bilet}!Silnik\+::\+Lot@{Silnik\+::\+Lot}}
+\subsubsection{\texorpdfstring{Usun\+Bilet()}{UsunBilet()}}
+{\footnotesize\ttfamily void Silnik.\+Lot.\+Usun\+Bilet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_silnik_1_1_bilet}{Bilet}}}]{bilet }\end{DoxyParamCaption})}
+
+
+
+Removes \mbox{\hyperlink{class_silnik_1_1_bilet}{Bilet}} from class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bilet} & Ticket to remove.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_silnik_1_1_lot_a3e02a16efd94bb1428ee6f3a34aacd8d}\label{class_silnik_1_1_lot_a3e02a16efd94bb1428ee6f3a34aacd8d}} 
+\index{Silnik\+::\+Lot@{Silnik\+::\+Lot}!bilety@{bilety}}
+\index{bilety@{bilety}!Silnik\+::\+Lot@{Silnik\+::\+Lot}}
+\subsubsection{\texorpdfstring{bilety}{bilety}}
+{\footnotesize\ttfamily Observable\+Collection$<$\mbox{\hyperlink{class_silnik_1_1_bilet}{Bilet}}$>$ Silnik.\+Lot.\+bilety}
+
+
+
+Stores Bilety
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_silnik_1_1_lot_a7a4e0de2fff28c39b2f81a330235d1bd}\label{class_silnik_1_1_lot_a7a4e0de2fff28c39b2f81a330235d1bd}} 
+\index{Silnik\+::\+Lot@{Silnik\+::\+Lot}!Czas\+Podruzy@{Czas\+Podruzy}}
+\index{Czas\+Podruzy@{Czas\+Podruzy}!Silnik\+::\+Lot@{Silnik\+::\+Lot}}
+\subsubsection{\texorpdfstring{Czas\+Podruzy}{CzasPodruzy}}
+{\footnotesize\ttfamily Time\+Span Silnik.\+Lot.\+Czas\+Podruzy\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets and sets Czas\+Podruzy 
+
+\mbox{\Hypertarget{class_silnik_1_1_lot_ac3b72a8fbb28b3dbbab0849caeec3aa9}\label{class_silnik_1_1_lot_ac3b72a8fbb28b3dbbab0849caeec3aa9}} 
+\index{Silnik\+::\+Lot@{Silnik\+::\+Lot}!Data\+Przylotu@{Data\+Przylotu}}
+\index{Data\+Przylotu@{Data\+Przylotu}!Silnik\+::\+Lot@{Silnik\+::\+Lot}}
+\subsubsection{\texorpdfstring{Data\+Przylotu}{DataPrzylotu}}
+{\footnotesize\ttfamily Date\+Time Silnik.\+Lot.\+Data\+Przylotu\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets automatic paramether Data\+Przylotu 
+
+\mbox{\Hypertarget{class_silnik_1_1_lot_abff1662fa3776aab3d8889374bfb85f2}\label{class_silnik_1_1_lot_abff1662fa3776aab3d8889374bfb85f2}} 
+\index{Silnik\+::\+Lot@{Silnik\+::\+Lot}!Data\+Wylotu@{Data\+Wylotu}}
+\index{Data\+Wylotu@{Data\+Wylotu}!Silnik\+::\+Lot@{Silnik\+::\+Lot}}
+\subsubsection{\texorpdfstring{Data\+Wylotu}{DataWylotu}}
+{\footnotesize\ttfamily Date\+Time Silnik.\+Lot.\+Data\+Wylotu\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets and sets Data\+Wylotu 
+
+\mbox{\Hypertarget{class_silnik_1_1_lot_afa780f21019d3396c86f1d0e67a0a02a}\label{class_silnik_1_1_lot_afa780f21019d3396c86f1d0e67a0a02a}} 
+\index{Silnik\+::\+Lot@{Silnik\+::\+Lot}!ID@{ID}}
+\index{ID@{ID}!Silnik\+::\+Lot@{Silnik\+::\+Lot}}
+\subsubsection{\texorpdfstring{ID}{ID}}
+{\footnotesize\ttfamily int Silnik.\+Lot.\+ID\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets and sets ID 
+
+\mbox{\Hypertarget{class_silnik_1_1_lot_a9adba13eadf70435a63a5ecd9ed20cd2}\label{class_silnik_1_1_lot_a9adba13eadf70435a63a5ecd9ed20cd2}} 
+\index{Silnik\+::\+Lot@{Silnik\+::\+Lot}!Rezerwacje@{Rezerwacje}}
+\index{Rezerwacje@{Rezerwacje}!Silnik\+::\+Lot@{Silnik\+::\+Lot}}
+\subsubsection{\texorpdfstring{Rezerwacje}{Rezerwacje}}
+{\footnotesize\ttfamily int Silnik.\+Lot.\+Rezerwacje\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets automatic paramether Rezerwacje 
+
+\mbox{\Hypertarget{class_silnik_1_1_lot_ad8823384ab258305bbc2dd1baee4eadd}\label{class_silnik_1_1_lot_ad8823384ab258305bbc2dd1baee4eadd}} 
+\index{Silnik\+::\+Lot@{Silnik\+::\+Lot}!Samolot@{Samolot}}
+\index{Samolot@{Samolot}!Silnik\+::\+Lot@{Silnik\+::\+Lot}}
+\subsubsection{\texorpdfstring{Samolot}{Samolot}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_silnik_1_1_samolot}{Samolot}} Silnik.\+Lot.\+Samolot\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets and sets \mbox{\hyperlink{class_silnik_1_1_samolot}{Samolot}} 
+
+\mbox{\Hypertarget{class_silnik_1_1_lot_a665ef105afa7a29ee7870c720b762d6e}\label{class_silnik_1_1_lot_a665ef105afa7a29ee7870c720b762d6e}} 
+\index{Silnik\+::\+Lot@{Silnik\+::\+Lot}!Trasa@{Trasa}}
+\index{Trasa@{Trasa}!Silnik\+::\+Lot@{Silnik\+::\+Lot}}
+\subsubsection{\texorpdfstring{Trasa}{Trasa}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_silnik_1_1_trasa}{Trasa}} Silnik.\+Lot.\+Trasa\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets and sets \mbox{\hyperlink{class_silnik_1_1_trasa}{Trasa}} 
+
+\mbox{\Hypertarget{class_silnik_1_1_lot_af5d78c458695021ff86158728209c31b}\label{class_silnik_1_1_lot_af5d78c458695021ff86158728209c31b}} 
+\index{Silnik\+::\+Lot@{Silnik\+::\+Lot}!Wolne\+Rezerwacje@{Wolne\+Rezerwacje}}
+\index{Wolne\+Rezerwacje@{Wolne\+Rezerwacje}!Silnik\+::\+Lot@{Silnik\+::\+Lot}}
+\subsubsection{\texorpdfstring{Wolne\+Rezerwacje}{WolneRezerwacje}}
+{\footnotesize\ttfamily int Silnik.\+Lot.\+Wolne\+Rezerwacje\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets and sets Wolne\+Rezerwacje 
+
+\mbox{\Hypertarget{class_silnik_1_1_lot_a8246b195b85797bb116d4b1ac61c8082}\label{class_silnik_1_1_lot_a8246b195b85797bb116d4b1ac61c8082}} 
+\index{Silnik\+::\+Lot@{Silnik\+::\+Lot}!W\+Trakcie@{W\+Trakcie}}
+\index{W\+Trakcie@{W\+Trakcie}!Silnik\+::\+Lot@{Silnik\+::\+Lot}}
+\subsubsection{\texorpdfstring{W\+Trakcie}{WTrakcie}}
+{\footnotesize\ttfamily bool Silnik.\+Lot.\+W\+Trakcie\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets and sets W\+Trakcie 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+H\+P/source/repos/\+Project-\/2-\/2018/\+Kasa/\+Silnik/\+Models/Lot.\+cs\end{DoxyCompactItemize}

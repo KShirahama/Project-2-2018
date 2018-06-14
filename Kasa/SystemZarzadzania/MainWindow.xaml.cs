@@ -65,6 +65,7 @@ namespace SystemZarzadzania
 
             listaLotowRezerwacje.ItemsSource = serwer.loty;
             //listaBiletowRezerwacje.ItemsSource = (ObservableCollection<Bilet>)listaLotowRezerwacje.SelectedItem;
+            listaLotow.ItemsSource = serwer.loty;
             listaKlientow.ItemsSource = serwer.klienci;
             listaTras.ItemsSource = serwer.trasy;
             listaTypowSamolotow.ItemsSource = serwer.typySamolotow;
@@ -126,6 +127,7 @@ namespace SystemZarzadzania
                 for (int i = 0; i < ilosc; i++)
                 {
                     serwer.loty.FirstOrDefault(x => x == listaLotowRezerwacje.SelectedItem).RezerwujBilet(new Bilet((Klient)klientRezerwacji.SelectedItem, cena / ilosc, id));
+                    serwer.rezerwacjeID++;
                 }
                 NowaRezerwacja();
             }
